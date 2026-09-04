@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un Rincón Especial</title>
+  <style>
+    /* Estilos Generales */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #fdf0f2;
+      color: #4a4a4a;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Fondo de Corazones Flotantes */
+    .hearts-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      bottom: -10%;
+      font-size: 20px;
+      color: #ffb6c1;
+      animation: floatUp 8s infinite linear;
+      opacity: 0.7;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Contenedor de Login / Contraseña */
+    #login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff0f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .login-box {
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+      text-align: center;
+      max-width: 350px;
+      width: 100%;
+    }
+    .login-box h2 {
+      color: #d87093;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ffccd5;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #ffb6c1;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .login-box button:hover {
+      background: #ff8da1;
+    }
+
+    /* Contenido Principal */
+    #main-content {
+      display: none; /* Se activa con la contraseña */
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header h1 {
+      color: #c71585;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #8b5a2b;
+      font-style: italic;
+    }
+
+    /* Secciones */
+    .section-title {
+      text-align: center;
+      color: #d87093;
+      margin: 40px 0 20px 0;
+      font-size: 1.6rem;
+    }
+
+    /* Galería de Fotos Grandes */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      background: #fff;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .gallery-item p {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Línea de Tiempo / Momentos */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .timeline-card {
+      background: white;
+      padding: 20px;
+      border-left: 5px solid #ffb6c1;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+    .timeline-card h3 {
+      color: #c71585;
+      margin-bottom: 5px;
+    }
+
+    /* Mensaje Final */
+    .final-message {
+      background: #fff5f7;
+      border: 2px dashed #ffb6c1;
+      padding: 30px;
+      border-radius: 20px;
+      margin-top: 50px;
+      text-align: center;
+      line-height: 1.8;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-bg" id="hearts-container"></div>
+
+  <div id="login-screen">
+    <div class="login-box">
+      <h2>Entrada Privada 🤍</h2>
+      <input type="password" id="password-input" placeholder="Ingresa la contraseña...">
+      <button onclick="checkPassword()">Ingresar</button>
+    </div>
+  </div>
+
+  <div id="main-content">
+    <header>
+      <h1>Para María</h1>
+      <p>"Un espacio dedicado a recordar lo vivido y guardar cada momento."</p>
+    </header>
+
+    <h2 class="section-title">Galería de Recuerdos 📸</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x500" alt="Foto de María">
+        <p>Momento especial</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x500" alt="Foto de María">
+        <p>Una sonrisa bonita</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x500" alt="Foto de María">
+        <p>Un día inolvidable</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Nuestra Historia 📖</h2>
+    <div class="timeline">
+      <div class="timeline-card">
+        <h3>El Comienzo</h3>
+        <p>Aquí puedes escribir cómo empezó todo y las primeras pláticas compartidas.</p>
+      </div>
+      <div class="timeline-card">
+        <h3>Llamadas y Momentos Únicos</h3>
+        <p>Espacio para recordar esas noches largas platicando y compartiendo sueños.</p>
+      </div>
+    </div>
+
+    <div class="final-message">
+      <h2 style="color: #c71585; margin-bottom: 15px;">Gracias por Todo ✨</h2>
+      <p>
+        Aquí va el texto de cierre, agradeciendo el tiempo compartido, todo lo aprendido y deseando siempre lo mejor para su camino. Un espacio lleno de respeto y paz para cerrar este ciclo.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Configura aquí tu contraseña deseada
+    const SECRET_PASSWORD = "maria"; 
+
+    function checkPassword() {
+      const input = document.getElementById('password-input').value;
+      if (input === SECRET_PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        alert("Contraseña incorrecta. Inténtalo de nuevo.");
+      }
+    }
+
+    // Generador de corazones flotantes
+    const heartsContainer = document.getElementById('hearts-container');
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      heartsContainer.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
+
