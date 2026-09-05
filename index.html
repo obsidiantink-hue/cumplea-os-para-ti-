@@ -133,6 +133,13 @@
       font-style: italic;
       font-size: 1.1rem;
     }
+    .header-img {
+      max-width: 250px;
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
     .section-title {
       text-align: center;
@@ -141,27 +148,28 @@
       font-size: 1.6rem;
     }
 
-    /* Galería */
+    /* Galería de Fotos de Ella */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
     }
     .gallery-item {
       background: #fff;
-      padding: 12px;
+      padding: 8px;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       text-align: center;
     }
     .gallery-item img {
       width: 100%;
-      height: 280px;
+      height: 260px;
       object-fit: cover;
       border-radius: 10px;
     }
 
-    /* Bloques de Texto de la Carta */
+    /* Bloques de Texto */
     .letter-block {
       background: white;
       padding: 25px;
@@ -222,23 +230,33 @@
     <header>
       <h1>¡Feliz Cumpleaños María! 🎉🎂</h1>
       <p>"Un espacio dedicado a ti, a tus recuerdos y a todo lo vivido."</p>
+      <!-- Espacio reservado para la foto del perrito feliz -->
+      <div id="header-dog-container"></div>
     </header>
-
-    <!-- Galería de Fotos (Aquí irán los enlaces directos que me pases) -->
-    <h2 class="section-title">Galería de Recuerdos 📸</h2>
-    <div class="gallery-grid" id="gallery-container">
-      <div class="gallery-item">
-        <img src="https://via.placeholder.com/400x500" alt="Foto de María">
-        <p>Pendiente enlace de foto</p>
-      </div>
-    </div>
 
     <!-- Carta Dividida en Bloques -->
     <h2 class="section-title">Para Ti 💌</h2>
     
     <div class="letter-block">marita , quizás no ha pasado mucho tiempo desde que terminamos, pero solo hoy quiero molestarte, no directamente, pero quiero entregarte algo, ¡FELIZ CUMPLEAÑOS!🎉, si ya se , no es hoy, pero lo hice porque se que no nos volveremos a ver, espero que el 9 de noviembre te la pases bien, espero que puedas disfrutar mucho de ese día con tus familiares, con tus amigos, amigas, hermanos y bueno si llegas a tener pareja para ese entonces, también te lo deseo 💕😸, hoy es 4 de septiembre, es muy pronto para despedirme, y me voy a desaparecer unos meses, no sabrás nada de mí, y creo que no lo vas a necesitar, porque bueno mi registro de celular es hasta el 15 de septiembre, y esperaré hasta que tenga los 18 para que quede a mi nombre, perderé todo lo que tenga que ver con mi whatsapp,  y cosas que tenga vinculadas , por eso mismo te hice este recordatorio marita 💕, yo espero que para ese entonces ya estés mucho más madura mentalmente, espero que ya hayas logrado más cosas en la universidad, espero que puedas seguir adelante y lo importante es que hayas hecho amig@s allí, siempre te lo decía, pero está vez ya no lo diré por mucho tiempo, pero yo sé que vas a lograr lo que te propones, yo sé que vas a ser una gran mujer, aunque tengas flojera de ir , pero ya te acostumbraras , después de un tiempo tendrás un motivo para seguir adelante y para poder terminar tu carrera tanto como para ir a la universidad los sábados, mañana será otro día, si no mal cuento será el 4 día o más bien el sábado que irás, espero que te vaya muy bien todo el tiempo 🩷, sigue esforzándote como lo hacías , síguelo haciendo por mejorar como persona para tí, que sigas siendo una exelente amiga, hermana, prima , hija e incluso una buena novia a futuro.... se que lo harás , en incluso una abogada recomendada, eres muy responsable, muy activa y también, muy amable con la gente, por eso mismo me dejaste encantado y lo sigo estando, no tanto por lo que eres , si no por lo que haces para "ser", no dejes de hacerlo marita , yo sé que habrá momentos en que no puedas con tantas agobia, con tanto estrés, incluso los sobre pensar de tu vida, no le tengas miedo a nada, si no tienes con quién hablar, habla contigo misma, se que no confías en las personas muy bien, yo sé por lo que has pasado, y no todo , pero se cómo te sientes a veces, y tampoco es justo, se que tuviste un pasado algo similar al mío en muchas cosas, pero aunque no coincidimos en algunas , en las más importantes si , como el día de graduación de nosotros, marita no te rindas, sigue adelante y por lo que he visto ya lo has hecho, veo que hasta estás mejor que antes cuando estabas conmigo, lo siento mucho por haber sido una carga esos 2 meses , no quiera hacerte sentir mal , o quizás solo querías un amorío antes de entrar a la escuela y está bien, no me duele ya no me duele como antes , ahora lo único que me preocupa es tu seguridad, cuando sales , cuando vas a comprar, las cosas se han vuelto muy difíciles, e incluso yo podría desaparecer, no sé si victoria ya te ha dicho, pero ella te lo dirá aunque eso no importa, lo importante es que el 9 de noviembre disfrutes tu cumpleaños, que estes muy feliz, eres una buena persona, una buena niña, sabes que aún te sigo amando con todo mi corazón, te amo como la primera vez que nos empezamos a conocer, no he borrado ningún chat, nada de eso , aún lo mantengo así mismo no he eliminado nada y ni lo voy hacer, prefiero ver tus fotos y decir lo linda que eres , mirar tu rostro y quedarme tan perplejo con lo linda que eres</div>
 
-    <div class="letter-block highlight-block">lo que más me encanta de tí son tus cachetitos infladitos y también tu lunarcito en el cachete izquierdo, tus ojos almendra , el café que aunque no me gusta, pero los tuyos son hermosos, el delineado que siempre te haces en tus ojos, las pestañas, la forma de tu rostro, tus labios que son medio gruesos y tan rosados que me muero , el color de tu piel que te hace resaltar tan bien, los atuendos que siempre traes , la forma natural en la que te expresas, lo rara que eres , pero eso quiere decir que eres única en lo que te digo , tu humor rancio y tu pasión hacia otras cosas 🎀, simplemente eres maravillosa y siempre he estado orgulloso de ti y también impresionado, no te esfuerzes de más , si? 🙏 intenta hacerlo a tu modo marita, no se que llegue a pasar a futuro, tenia lo que quería, pero ahora no sé lo que quiero, y eso es bueno porque si no quiero nada puedo andar tranquilo, no tengo que sobre explotar nada, recuerda que también debes cuidarte, cuando salgas de trabajar si es que lo sigues haciendo, descansa un poco, deja tus pies refrescar, después te puedes bañar 💕 t amo mushote marita y agradezco mucho los momentos que pasamos juntos, las palabras que quedaron entre nosotros y los actos que también hicimos, que te quede como una experiencia maravillosa y algo de más que ocurrió, gracias por amarme , gracias por quererme y también por abrir un poco tu corazón hacia mí, no se en que falle y lo siento por no haber sido suficiente en ese entonces, se que no fuí el mejor novio, después de terminar me sentía tan mal, no paraba de llorar, no podía dormir, y todo era frustración para mí, hablé con tu hermana y hablé por 2 días más , y ella sabe más lo que pasó, le conté y le dije muchas cosas que no se si te enseñó, y si no , entonces es momento que le digas , y ahora mismo le dije a victoria que lo hiciera por mí, yo no tengo el valor para hablarte, y si , soy un cobarde, pero no quiero abrir heridas que están sanando de tu parte si es que las dejé sin querer, yo solo quiero lo mejor para tí y por eso accepted todo lo que me dijiste, aunque te propuse muchas cosas se que no funcionaria porque tú no te sentías segura , y está bien, ya no importa eso , lo importante ahora es que ya tienes la felicidad de antes o mejor aún , mejoraste , espero que si llegues a encontrar un novio, espero que sea mejor que yo en todo los aspectos, quizás luego lo pase por alto a él porque voy a mejorar, quizás no en belleza , pero puedo tomarlo enserio, si es que los narcos no me raptan JAJAJA, pero dejando eso de lado marita , gracias por todo lo lindo que me hiciste sentir, lo seguro y a veces inseguro que yo provocaba, gracias por escucharme, gracias por intentar animarme de mil maneras ❤️‍🩹</div>
+    <!-- Bloque Especial: Lo que más me encanta de ti con la galería de sus fotos integrada -->
+    <div class="letter-block highlight-block">
+      <p style="margin-bottom: 15px;">lo que más me encanta de tí son tus cachetitos infladitos y también tu lunarcito en el cachete izquierdo, tus ojos almendra , el café que aunque no me gusta, pero los tuyos son hermosos, el delineado que siempre te haces en tus ojos, las pestañas, la forma de tu rostro, tus labios que son medio gruesos y tan rosados que me muero , el color de tu piel que te hace resaltar tan bien, los atuendos que siempre traes , la forma natural en la que te expresas, lo rara que eres , pero eso quiere decir que eres única en lo que te digo , tu humor rancio y tu pasión hacia otras cosas 🎀, simplemente eres maravillosa y siempre he estado orgulloso de ti y también impresionado, no te esfuerzes de más , si? 🙏 intenta hacerlo a tu modo marita, no se que llegue a pasar a futuro, tenia lo que quería, pero ahora no sé lo que quiero, y eso es bueno porque si no quiero nada puedo andar tranquilo, no tengo que sobre explotar nada, recuerda que también debes cuidarte, cuando salgas de trabajar si es que lo sigues haciendo, descansa un poco, deja tus pies refrescar, después te puedes bañar 💕 t amo mushote marita y agradezco mucho los momentos que pasamos juntos, las palabras que quedaron entre nosotros y los actos que también hicimos, que te quede como una experiencia maravillosa y algo de más que ocurrió, gracias por amarme , gracias por quererme y también por abrir un poco tu corazón hacia mí, no se en que falle y lo siento por no haber sido suficiente en ese entonces, se que no fuí el mejor novio, después de terminar me sentía tan mal, no paraba de llorar, no podía dormir, y todo era frustración para mí, hablé con tu hermana y hablé por 2 días más , y ella sabe más lo que pasó, le conté y le dije muchas cosas que no se si te enseñó, y si no , entonces es momento que le digas , y ahora mismo le dije a victoria que lo hiciera por mí, yo no tengo el valor para hablarte, y si , soy un cobarde, pero no quiero abrir heridas que están sanando de tu parte si es que las dejé sin querer, yo solo quiero lo mejor para tí y por eso acepté todo lo que me dijiste, aunque te propuse muchas cosas se que no funcionaria porque tú no te sentías segura , y está bien, ya no importa eso , lo importante ahora es que ya tienes la felicidad de antes o mejor aún , mejoraste , espero que si llegues a encontrar un novio, espero que sea mejor que yo en todo los aspectos, quizás luego lo pase por alto a él porque voy a mejorar, quizás no en belleza , pero puedo tomarlo enserio, si es que los narcos no me raptan JAJAJA, pero dejando eso de lado marita , gracias por todo lo lindo que me hiciste sentir, lo seguro y a veces inseguro que yo provocaba, gracias por escucharme, gracias por intentar animarme de mil maneras ❤️‍al</p>
+
+      <!-- Galería con sus fotos -->
+      <h3 style="text-align: center; color: #c71585; margin: 20px 0 10px 0;">Recuerdos ✨📸</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://i.postimg.cc/Bv5V7N5K/IMG-20260611-193901-471.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/Bv5V7N56/IMG-20260613-WA0010.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/W4mHYSm4/IMG-20260611-WA0011.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/TPj4NQj5/IMG-20260617-WA0019.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/3wjcf9jd/IMG-20260613-WA0012.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/ZqPMsjPT/IMG-20260705-WA0010.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/Jh32YK34/IMG-20260625-WA0045.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/PqbRVKbZ/IMG-20260811-WA0006.jpg" alt="Foto de María"></div>
+        <div class="gallery-item"><img src="https://i.postimg.cc/mr35pV3g/IMG-20260811-WA0004.jpg" alt="Foto de María"></div>
+      </div>
+    </div>
 
     <div class="letter-block">aún puedo recordar las noches de llamada que aún siguen en mi corazón, las veces que poníamos la canción de milky, y cuando escucho esa canción empiezo a llorar porque me recuerda mucho a tí, no lo sé, pero el verte reir y feliz con lo del perrito me hacía sentir demasiado happy happy, incluso hasta empecé a llorar JAJAJA, pero es bueno, porque demuestra lo mucho que te sigo extrañando 💞 y bueno eso era todo marita , espero que tengas un feliz cumpleaños 🎂 yyyy que me guardes pastel si es que no muero , ah y no olvides las pizzas de galleta, si? , t amo marita 💗, cuídate demasiado, y te deseo lo mejor para tí, también antes de irme , quiero decirte que me disculpo por los malentendidos, porque desactivé mis cuentas, quería desaparecer un rato pero al ver el efecto que hubo en tí, decidí activarlas, aunque me dejaste de seguir, me eliminaste en todos lados y está bien, quien no pensaría eso , así que no te preocupes, es mi culpa 😸 y así puedas estar alejada de mí, no es necesario que tengas que ver mis perfiles tan pobres y bueno, de hecho creo que ni los mirabas JAJAJA solamente en facebook que me eliminaste directamente , pero bueno no pasa nada, al final se lo dije a victoria, y a mariela, y por cierto ella está aquí, vino a algunas cosas, pero se ira mañana, como sea , es hora de que me vaya maría o más bien , mi botellita de ketchup 😸 , qué te pasaaa? 👺☝️jsjsaja, y bien , hasta nunca diría yo , no lo sé, pero, nos vemos 💗 gracias por todo marita , siempre te estaré recordando...</div>
 
@@ -246,7 +264,6 @@
   </div>
 
   <!-- Botón Flotante para YouTube -->
-  <!-- Solo reemplaza 'AQUI_TU_ENLACE_DE_YOUTUBE' por el link real de tu video -->
   <a href="AQUI_TU_ENLACE_DE_YOUTUBE" target="_blank" class="floating-btn">
     🎁 pica aquí cumpleañera
   </a>
