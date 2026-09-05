@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un Rincón Especial</title>
+  <title>¡Feliz Cumpleaños María!</title>
+  <!-- Librería para la explosión de confeti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
-    /* Estilos Generales */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,8 +20,8 @@
       min-height: 100vh;
     }
 
-    /* Fondo de Corazones Flotantes */
-    .hearts-bg {
+    /* Fondo de Corazones y Velitas */
+    .floating-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -30,13 +31,12 @@
       z-index: 0;
       overflow: hidden;
     }
-    .heart {
+    .float-item {
       position: absolute;
       bottom: -10%;
-      font-size: 20px;
-      color: #ffb6c1;
+      font-size: 22px;
       animation: floatUp 8s infinite linear;
-      opacity: 0.7;
+      opacity: 0.8;
     }
     @keyframes floatUp {
       0% {
@@ -49,7 +49,7 @@
       }
     }
 
-    /* Contenedor de Login / Contraseña */
+    /* Pantalla de Contraseña */
     #login-screen {
       position: fixed;
       top: 0;
@@ -66,17 +66,23 @@
     }
     .login-box {
       background: #ffffff;
-      padding: 30px 25px;
+      padding: 35px 25px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
       text-align: center;
-      max-width: 350px;
+      max-width: 360px;
       width: 100%;
+      border: 2px solid #ffccd5;
     }
     .login-box h2 {
       color: #d87093;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    .login-box p {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 20px;
     }
     .login-box input {
       width: 100%;
@@ -106,12 +112,12 @@
 
     /* Contenido Principal */
     #main-content {
-      display: none; /* Se activa con la contraseña */
+      display: none;
       position: relative;
       z-index: 1;
       max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 40px 20px 100px 20px;
     }
     header {
       text-align: center;
@@ -119,15 +125,15 @@
     }
     header h1 {
       color: #c71585;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 10px;
     }
     header p {
       color: #8b5a2b;
       font-style: italic;
+      font-size: 1.1rem;
     }
 
-    /* Secciones */
     .section-title {
       text-align: center;
       color: #d87093;
@@ -135,7 +141,7 @@
       font-size: 1.6rem;
     }
 
-    /* Galería de Fotos Grandes */
+    /* Galería */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -143,7 +149,7 @@
     }
     .gallery-item {
       background: #fff;
-      padding: 10px;
+      padding: 12px;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       text-align: center;
@@ -154,123 +160,128 @@
       object-fit: cover;
       border-radius: 10px;
     }
-    .gallery-item p {
-      margin-top: 8px;
-      font-size: 0.9rem;
-      color: #666;
-    }
 
-    /* Línea de Tiempo / Momentos */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .timeline-card {
+    /* Bloques de Texto de la Carta */
+    .letter-block {
       background: white;
-      padding: 20px;
-      border-left: 5px solid #ffb6c1;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    }
-    .timeline-card h3 {
-      color: #c71585;
-      margin-bottom: 5px;
-    }
-
-    /* Mensaje Final */
-    .final-message {
-      background: #fff5f7;
-      border: 2px dashed #ffb6c1;
-      padding: 30px;
-      border-radius: 20px;
-      margin-top: 50px;
-      text-align: center;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      margin-bottom: 25px;
       line-height: 1.8;
       color: #555;
+      white-space: pre-wrap;
+    }
+    .highlight-block {
+      background: #fff0f3;
+      border: 2px dashed #ffb6c1;
+    }
+
+    /* Botón Flotante Rosadito */
+    .floating-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #ffb6c1;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(255, 141, 161, 0.5);
+      z-index: 99;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .floating-btn:hover {
+      background: #ff8da1;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-  <div class="hearts-bg" id="hearts-container"></div>
+  <!-- Fondo de Corazones y Velitas -->
+  <div class="floating-bg" id="floating-container"></div>
 
+  <!-- Pantalla de Contraseña -->
   <div id="login-screen">
     <div class="login-box">
-      <h2>Entrada Privada 🤍</h2>
-      <input type="password" id="password-input" placeholder="Ingresa la contraseña...">
-      <button onclick="checkPassword()">Ingresar</button>
+      <h2>¡Un Día Especial! 🎂🤍</h2>
+      <p>Ingresa la fecha para abrir tu regalo</p>
+      <input type="text" id="password-input" placeholder="Ingresa la fecha aquí...">
+      <button onclick="checkPassword()">Entrar 🎉</button>
     </div>
   </div>
 
+  <!-- Contenido Principal -->
   <div id="main-content">
     <header>
-      <h1>Para María</h1>
-      <p>"Un espacio dedicado a recordar lo vivido y guardar cada momento."</p>
+      <h1>¡Feliz Cumpleaños María! 🎉🎂</h1>
+      <p>"Un espacio dedicado a ti, a tus recuerdos y a todo lo vivido."</p>
     </header>
 
+    <!-- Galería de Fotos (Aquí irán los enlaces directos que me pases) -->
     <h2 class="section-title">Galería de Recuerdos 📸</h2>
-    <div class="gallery-grid">
+    <div class="gallery-grid" id="gallery-container">
       <div class="gallery-item">
         <img src="https://via.placeholder.com/400x500" alt="Foto de María">
-        <p>Momento especial</p>
-      </div>
-      <div class="gallery-item">
-        <img src="https://via.placeholder.com/400x500" alt="Foto de María">
-        <p>Una sonrisa bonita</p>
-      </div>
-      <div class="gallery-item">
-        <img src="https://via.placeholder.com/400x500" alt="Foto de María">
-        <p>Un día inolvidable</p>
+        <p>Pendiente enlace de foto</p>
       </div>
     </div>
 
-    <h2 class="section-title">Nuestra Historia 📖</h2>
-    <div class="timeline">
-      <div class="timeline-card">
-        <h3>El Comienzo</h3>
-        <p>Aquí puedes escribir cómo empezó todo y las primeras pláticas compartidas.</p>
-      </div>
-      <div class="timeline-card">
-        <h3>Llamadas y Momentos Únicos</h3>
-        <p>Espacio para recordar esas noches largas platicando y compartiendo sueños.</p>
-      </div>
-    </div>
+    <!-- Carta Dividida en Bloques -->
+    <h2 class="section-title">Para Ti 💌</h2>
+    
+    <div class="letter-block">marita , quizás no ha pasado mucho tiempo desde que terminamos, pero solo hoy quiero molestarte, no directamente, pero quiero entregarte algo, ¡FELIZ CUMPLEAÑOS!🎉, si ya se , no es hoy, pero lo hice porque se que no nos volveremos a ver, espero que el 9 de noviembre te la pases bien, espero que puedas disfrutar mucho de ese día con tus familiares, con tus amigos, amigas, hermanos y bueno si llegas a tener pareja para ese entonces, también te lo deseo 💕😸, hoy es 4 de septiembre, es muy pronto para despedirme, y me voy a desaparecer unos meses, no sabrás nada de mí, y creo que no lo vas a necesitar, porque bueno mi registro de celular es hasta el 15 de septiembre, y esperaré hasta que tenga los 18 para que quede a mi nombre, perderé todo lo que tenga que ver con mi whatsapp,  y cosas que tenga vinculadas , por eso mismo te hice este recordatorio marita 💕, yo espero que para ese entonces ya estés mucho más madura mentalmente, espero que ya hayas logrado más cosas en la universidad, espero que puedas seguir adelante y lo importante es que hayas hecho amig@s allí, siempre te lo decía, pero está vez ya no lo diré por mucho tiempo, pero yo sé que vas a lograr lo que te propones, yo sé que vas a ser una gran mujer, aunque tengas flojera de ir , pero ya te acostumbraras , después de un tiempo tendrás un motivo para seguir adelante y para poder terminar tu carrera tanto como para ir a la universidad los sábados, mañana será otro día, si no mal cuento será el 4 día o más bien el sábado que irás, espero que te vaya muy bien todo el tiempo 🩷, sigue esforzándote como lo hacías , síguelo haciendo por mejorar como persona para tí, que sigas siendo una exelente amiga, hermana, prima , hija e incluso una buena novia a futuro.... se que lo harás , en incluso una abogada recomendada, eres muy responsable, muy activa y también, muy amable con la gente, por eso mismo me dejaste encantado y lo sigo estando, no tanto por lo que eres , si no por lo que haces para "ser", no dejes de hacerlo marita , yo sé que habrá momentos en que no puedas con tantas agobia, con tanto estrés, incluso los sobre pensar de tu vida, no le tengas miedo a nada, si no tienes con quién hablar, habla contigo misma, se que no confías en las personas muy bien, yo sé por lo que has pasado, y no todo , pero se cómo te sientes a veces, y tampoco es justo, se que tuviste un pasado algo similar al mío en muchas cosas, pero aunque no coincidimos en algunas , en las más importantes si , como el día de graduación de nosotros, marita no te rindas, sigue adelante y por lo que he visto ya lo has hecho, veo que hasta estás mejor que antes cuando estabas conmigo, lo siento mucho por haber sido una carga esos 2 meses , no quiera hacerte sentir mal , o quizás solo querías un amorío antes de entrar a la escuela y está bien, no me duele ya no me duele como antes , ahora lo único que me preocupa es tu seguridad, cuando sales , cuando vas a comprar, las cosas se han vuelto muy difíciles, e incluso yo podría desaparecer, no sé si victoria ya te ha dicho, pero ella te lo dirá aunque eso no importa, lo importante es que el 9 de noviembre disfrutes tu cumpleaños, que estes muy feliz, eres una buena persona, una buena niña, sabes que aún te sigo amando con todo mi corazón, te amo como la primera vez que nos empezamos a conocer, no he borrado ningún chat, nada de eso , aún lo mantengo así mismo no he eliminado nada y ni lo voy hacer, prefiero ver tus fotos y decir lo linda que eres , mirar tu rostro y quedarme tan perplejo con lo linda que eres</div>
 
-    <div class="final-message">
-      <h2 style="color: #c71585; margin-bottom: 15px;">Gracias por Todo ✨</h2>
-      <p>
-        Aquí va el texto de cierre, agradeciendo el tiempo compartido, todo lo aprendido y deseando siempre lo mejor para su camino. Un espacio lleno de respeto y paz para cerrar este ciclo.
-      </p>
-    </div>
+    <div class="letter-block highlight-block">lo que más me encanta de tí son tus cachetitos infladitos y también tu lunarcito en el cachete izquierdo, tus ojos almendra , el café que aunque no me gusta, pero los tuyos son hermosos, el delineado que siempre te haces en tus ojos, las pestañas, la forma de tu rostro, tus labios que son medio gruesos y tan rosados que me muero , el color de tu piel que te hace resaltar tan bien, los atuendos que siempre traes , la forma natural en la que te expresas, lo rara que eres , pero eso quiere decir que eres única en lo que te digo , tu humor rancio y tu pasión hacia otras cosas 🎀, simplemente eres maravillosa y siempre he estado orgulloso de ti y también impresionado, no te esfuerzes de más , si? 🙏 intenta hacerlo a tu modo marita, no se que llegue a pasar a futuro, tenia lo que quería, pero ahora no sé lo que quiero, y eso es bueno porque si no quiero nada puedo andar tranquilo, no tengo que sobre explotar nada, recuerda que también debes cuidarte, cuando salgas de trabajar si es que lo sigues haciendo, descansa un poco, deja tus pies refrescar, después te puedes bañar 💕 t amo mushote marita y agradezco mucho los momentos que pasamos juntos, las palabras que quedaron entre nosotros y los actos que también hicimos, que te quede como una experiencia maravillosa y algo de más que ocurrió, gracias por amarme , gracias por quererme y también por abrir un poco tu corazón hacia mí, no se en que falle y lo siento por no haber sido suficiente en ese entonces, se que no fuí el mejor novio, después de terminar me sentía tan mal, no paraba de llorar, no podía dormir, y todo era frustración para mí, hablé con tu hermana y hablé por 2 días más , y ella sabe más lo que pasó, le conté y le dije muchas cosas que no se si te enseñó, y si no , entonces es momento que le digas , y ahora mismo le dije a victoria que lo hiciera por mí, yo no tengo el valor para hablarte, y si , soy un cobarde, pero no quiero abrir heridas que están sanando de tu parte si es que las dejé sin querer, yo solo quiero lo mejor para tí y por eso accepted todo lo que me dijiste, aunque te propuse muchas cosas se que no funcionaria porque tú no te sentías segura , y está bien, ya no importa eso , lo importante ahora es que ya tienes la felicidad de antes o mejor aún , mejoraste , espero que si llegues a encontrar un novio, espero que sea mejor que yo en todo los aspectos, quizás luego lo pase por alto a él porque voy a mejorar, quizás no en belleza , pero puedo tomarlo enserio, si es que los narcos no me raptan JAJAJA, pero dejando eso de lado marita , gracias por todo lo lindo que me hiciste sentir, lo seguro y a veces inseguro que yo provocaba, gracias por escucharme, gracias por intentar animarme de mil maneras ❤️‍🩹</div>
+
+    <div class="letter-block">aún puedo recordar las noches de llamada que aún siguen en mi corazón, las veces que poníamos la canción de milky, y cuando escucho esa canción empiezo a llorar porque me recuerda mucho a tí, no lo sé, pero el verte reir y feliz con lo del perrito me hacía sentir demasiado happy happy, incluso hasta empecé a llorar JAJAJA, pero es bueno, porque demuestra lo mucho que te sigo extrañando 💞 y bueno eso era todo marita , espero que tengas un feliz cumpleaños 🎂 yyyy que me guardes pastel si es que no muero , ah y no olvides las pizzas de galleta, si? , t amo marita 💗, cuídate demasiado, y te deseo lo mejor para tí, también antes de irme , quiero decirte que me disculpo por los malentendidos, porque desactivé mis cuentas, quería desaparecer un rato pero al ver el efecto que hubo en tí, decidí activarlas, aunque me dejaste de seguir, me eliminaste en todos lados y está bien, quien no pensaría eso , así que no te preocupes, es mi culpa 😸 y así puedas estar alejada de mí, no es necesario que tengas que ver mis perfiles tan pobres y bueno, de hecho creo que ni los mirabas JAJAJA solamente en facebook que me eliminaste directamente , pero bueno no pasa nada, al final se lo dije a victoria, y a mariela, y por cierto ella está aquí, vino a algunas cosas, pero se ira mañana, como sea , es hora de que me vaya maría o más bien , mi botellita de ketchup 😸 , qué te pasaaa? 👺☝️jsjsaja, y bien , hasta nunca diría yo , no lo sé, pero, nos vemos 💗 gracias por todo marita , siempre te estaré recordando...</div>
+
+    <div class="letter-block highlight-block" style="text-align: center;">ahhh... pero eso no es todoooo , hay un video para tí que hice , quizás allá fotos del proceso allí mismo, así queeee.....</div>
   </div>
 
+  <!-- Botón Flotante para YouTube -->
+  <!-- Solo reemplaza 'AQUI_TU_ENLACE_DE_YOUTUBE' por el link real de tu video -->
+  <a href="AQUI_TU_ENLACE_DE_YOUTUBE" target="_blank" class="floating-btn">
+    🎁 pica aquí cumpleañera
+  </a>
+
   <script>
-    // Configura aquí tu contraseña deseada
-    const SECRET_PASSWORD = "maria"; 
+    const SECRET_PASSWORD = "9/11/2026"; 
 
     function checkPassword() {
-      const input = document.getElementById('password-input').value;
+      const input = document.getElementById('password-input').value.trim();
       if (input === SECRET_PASSWORD) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
+        
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
       } else {
-        alert("Contraseña incorrecta. Inténtalo de nuevo.");
+        alert("Contraseña incorrecta. Pista: Es la fecha de tu cumpleaños (9/11/2026)");
       }
     }
 
-    // Generador de corazones flotantes
-    const heartsContainer = document.getElementById('hearts-container');
-    for (let i = 0; i < 25; i++) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML = '❤️';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-      heartsContainer.appendChild(heart);
+    const container = document.getElementById('floating-container');
+    const items = ['❤️', '🎂', '🕯️', '💖', '✨'];
+    
+    for (let i = 0; i < 30; i++) {
+      const floatItem = document.createElement('div');
+      floatItem.classList.add('float-item');
+      floatItem.innerHTML = items[Math.floor(Math.random() * items.length)];
+      floatItem.style.left = Math.random() * 100 + 'vw';
+      floatItem.style.animationDuration = (Math.random() * 5 + 6) + 's';
+      floatItem.style.fontSize = (Math.random() * 12 + 18) + 'px';
+      container.appendChild(floatItem);
     }
   </script>
 </body>
 </html>
-
